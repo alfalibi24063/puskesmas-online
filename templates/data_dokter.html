@@ -1,0 +1,83 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+
+        <h4 class="mb-0">Data Dokter</h4>
+
+        <a href="{{ url_for('radmin.tambah_dokter') }}"
+           class="btn btn-light btn-sm">
+            <i class="bi bi-plus-circle"></i>
+            Tambah Dokter
+        </a>
+
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-striped table-hover">
+
+            <thead class="table-success">
+                <tr>
+                    <th>No</th>
+                    <th>Nama Dokter</th>
+                    <th>Spesialis</th>
+                    <th>Jadwal</th>
+                    <th>No Telepon</th>
+                    <th width="180">Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for d in dokter %}
+
+                <tr>
+
+                    <td>{{ loop.index }}</td>
+                    <td>{{ d.nama_dokter }}</td>
+                    <td>{{ d.spesialis }}</td>
+                    <td>{{ d.jadwal }}</td>
+                    <td>{{ d.no_telp }}</td>
+
+                    <td>
+
+                        <a href="{{ url_for('radmin.edit_dokter', id=d.id) }}"
+                           class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i>
+                            Edit
+                        </a>
+
+                        <a href="{{ url_for('radmin.hapus_dokter', id=d.id) }}"
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Yakin ingin menghapus dokter ini?')">
+                            <i class="bi bi-trash"></i>
+                            Hapus
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% else %}
+
+                <tr>
+                    <td colspan="6" class="text-center">
+                        Belum ada data dokter.
+                    </td>
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

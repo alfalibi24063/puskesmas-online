@@ -1,0 +1,57 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header bg-success text-white">
+        <h4 class="mb-0">
+            <i class="bi bi-plus-circle"></i>
+            Tambah Data Dokter
+        </h4>
+    </div>
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+                {{ form.nama_dokter.label(class="form-label") }}
+                {{ form.nama_dokter(class="form-control", placeholder="Masukkan nama dokter") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.spesialis.label(class="form-label") }}
+                {{ form.spesialis(class="form-control", placeholder="Masukkan spesialis") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.jadwal.label(class="form-label") }}
+                {{ form.jadwal(class="form-control", placeholder="Contoh: Senin - Jumat") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.no_telp.label(class="form-label") }}
+                {{ form.no_telp(class="form-control", placeholder="08xxxxxxxxxx") }}
+            </div>
+
+            <div class="mt-4">
+
+                {{ form.submit(class="btn btn-success") }}
+
+                <a href="{{ url_for('radmin.data_dokter') }}"
+                   class="btn btn-secondary">
+                    Kembali
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

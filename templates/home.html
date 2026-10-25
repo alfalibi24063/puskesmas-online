@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% block konten %}
+
+<!-- HERO -->
+<section class="container my-5">
+    <div class="p-4 p-md-5 text-center bg-white rounded-4 shadow">
+        <img src="{{ url_for('static', filename='img/logo_puskesmas.png') }}"
+             alt="Logo Puskesmas"
+             class="mb-3"
+             style="width: 90px; height: 90px; object-fit: contain;">
+
+        <h1 class="display-5 fw-bold text-success">
+            Selamat Datang di
+        </h1>
+
+        <h2 class="fw-bold mb-3">
+            Sistem Pendaftaran Pasien Puskesmas
+        </h2>
+
+        <p class="lead text-secondary mx-auto" style="max-width: 800px;">
+            Layanan pendaftaran konsultasi secara online yang membantu
+            pasien memilih dokter, menentukan jadwal konsultasi, dan
+            menyimpan data pendaftaran dengan lebih mudah.
+        </p>
+
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('rpasien.pendaftaran') }}"
+           class="btn btn-success btn-lg mt-3">
+            <i class="bi bi-calendar-check"></i>
+            Daftar Konsultasi
+        </a>
+        {% else %}
+        <a href="{{ url_for('rpasien.login') }}"
+           class="btn btn-success btn-lg mt-3">
+            <i class="bi bi-box-arrow-in-right"></i>
+            Login untuk Mendaftar
+        </a>
+
+        <a href="{{ url_for('rpasien.register') }}"
+           class="btn btn-outline-success btn-lg mt-3">
+            Registrasi Pasien
+        </a>
+        {% endif %}
+    </div>
+</section>
+
+<!-- INFORMASI LAYANAN -->
+<section class="container mb-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-success">Informasi Layanan</h2>
+        <p class="text-secondary">
+            Kenali layanan yang tersedia pada sistem pendaftaran pasien.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body text-center p-4">
+                    <div class="display-4 text-success mb-3">
+                        <i class="bi bi-clipboard-check"></i>
+                    </div>
+                    <h4 class="card-title fw-bold">Pendaftaran Online</h4>
+                    <p class="card-text text-secondary">
+                        Isi keluhan, pilih dokter, dan tentukan tanggal
+                        serta jam konsultasi melalui halaman pendaftaran.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body text-center p-4">
+                    <div class="display-4 text-success mb-3">
+                        <i class="bi bi-person-vcard"></i>
+                    </div>
+                    <h4 class="card-title fw-bold">Informasi Dokter</h4>
+                    <p class="card-text text-secondary">
+                        Lihat nama dokter, spesialisasi, jadwal praktik,
+                        dan informasi kontak dokter yang tersedia.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body text-center p-4">
+                    <div class="display-4 text-success mb-3">
+                        <i class="bi bi-calendar2-week"></i>
+                    </div>
+                    <h4 class="card-title fw-bold">Jadwal Konsultasi</h4>
+                    <p class="card-text text-secondary">
+                        Periksa kembali tanggal, jam, dokter, dan keluhan
+                        dari konsultasi yang sudah didaftarkan.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CARA MENGGUNAKAN -->
+<section class="container mb-5">
+    <div class="bg-white rounded-4 shadow-sm p-4 p-md-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-success">Cara Menggunakan Layanan</h2>
+            <p class="text-secondary">
+                Ikuti empat langkah sederhana berikut.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+                <div class="card h-100 border-success text-center rounded-4">
+                    <div class="card-body p-4">
+                        <span class="badge rounded-pill text-bg-success fs-5 mb-3">1</span>
+                        <h5 class="fw-bold">Registrasi</h5>
+                        <p class="text-secondary mb-0">
+                            Buat akun dengan mengisi data diri pasien.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card h-100 border-success text-center rounded-4">
+                    <div class="card-body p-4">
+                        <span class="badge rounded-pill text-bg-success fs-5 mb-3">2</span>
+                        <h5 class="fw-bold">Login</h5>
+                        <p class="text-secondary mb-0">
+                            Masuk menggunakan email dan password akun.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card h-100 border-success text-center rounded-4">
+                    <div class="card-body p-4">
+                        <span class="badge rounded-pill text-bg-success fs-5 mb-3">3</span>
+                        <h5 class="fw-bold">Daftar Konsultasi</h5>
+                        <p class="text-secondary mb-0">
+                            Pilih dokter, tanggal, jam, dan masukkan keluhan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card h-100 border-success text-center rounded-4">
+                    <div class="card-body p-4">
+                        <span class="badge rounded-pill text-bg-success fs-5 mb-3">4</span>
+                        <h5 class="fw-bold">Periksa Jadwal</h5>
+                        <p class="text-secondary mb-0">
+                            Lihat kembali data pendaftaran konsultasi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- INFORMASI TAMBAHAN -->
+<section class="container mb-5">
+    <div class="p-4 p-md-5 bg-success text-white rounded-4 shadow text-center">
+        <h2 class="fw-bold">Pelayanan Kesehatan Lebih Mudah</h2>
+        <p class="lead">
+            Gunakan sistem pendaftaran online untuk membantu proses
+            pendaftaran konsultasi menjadi lebih praktis.
+        </p>
+
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('rpasien.pendaftaran') }}"
+           class="btn btn-light btn-lg text-success fw-bold">
+            Mulai Pendaftaran
+        </a>
+        {% else %}
+        <a href="{{ url_for('rpasien.register') }}"
+           class="btn btn-light btn-lg text-success fw-bold">
+            Daftar Sekarang
+        </a>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

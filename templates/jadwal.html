@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block konten %}
+
+<div class="card shadow">
+
+    <div class="card-header bg-success text-white">
+
+        <h4>
+            <i class="bi bi-calendar-check"></i>
+            Jadwal Konsultasi Saya
+        </h4>
+
+    </div>
+
+
+    <div class="card-body">
+
+
+        <table class="table table-bordered table-striped">
+
+            <thead class="table-success">
+
+                <tr>
+                    <th>No</th>
+                    <th>Dokter</th>
+                    <th>Tanggal</th>
+                    <th>Jam</th>
+                    <th>Keluhan</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+            {% for j in jadwal %}
+
+            <tr>
+
+                <td>{{ loop.index }}</td>
+
+                <td>
+                    {{ j.dokter.nama_dokter }}
+                </td>
+
+                <td>
+                    {{ j.tanggal_konsultasi }}
+                </td>
+
+                <td>
+                    {{ j.jam_konsultasi }}
+                </td>
+
+                <td>
+                    {{ j.keluhan }}
+                </td>
+
+            </tr>
+
+
+            {% else %}
+
+            <tr>
+                <td colspan="5" class="text-center">
+                    Belum ada jadwal konsultasi
+                </td>
+            </tr>
+
+
+            {% endfor %}
+
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+</div>
+
+
+{% endblock %}

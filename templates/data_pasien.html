@@ -1,0 +1,67 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header bg-success text-white">
+        <h5 class="mb-0">Data Pasien</h5>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-hover">
+
+            <thead class="table-success">
+                <tr>
+                    <th>No</th>
+                    <th>NIK</th>
+                    <th>Nama</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Telepon</th>
+                    <th>Email</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for p in pasien %}
+
+                <tr>
+
+                    <td>{{ loop.index }}</td>
+                    <td>{{ p.nik }}</td>
+                    <td>{{ p.nama }}</td>
+                    <td>{{ p.jenis_kelamin }}</td>
+                    <td>{{ p.telepon }}</td>
+                    <td>{{ p.email }}</td>
+
+                    <td>
+                        <a href="{{ url_for('radmin.detail_pasien', id=p.id) }}"
+                           class="btn btn-primary btn-sm">
+                            Detail
+                        </a>
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+                    <td colspan="7" class="text-center">
+                        Belum ada data pasien.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

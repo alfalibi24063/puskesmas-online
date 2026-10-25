@@ -1,0 +1,61 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header bg-success text-white">
+        <h4 class="mb-0">Detail Data Pasien</h4>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered">
+
+            <tr>
+                <th width="30%">ID</th>
+                <td>{{ pasien.id }}</td>
+            </tr>
+
+            <tr>
+                <th>NIK</th>
+                <td>{{ pasien.nik }}</td>
+            </tr>
+
+            <tr>
+                <th>Nama Pasien</th>
+                <td>{{ pasien.nama }}</td>
+            </tr>
+
+            <tr>
+                <th>Jenis Kelamin</th>
+                <td>{{ pasien.jenis_kelamin }}</td>
+            </tr>
+
+            <tr>
+                <th>Alamat</th>
+                <td>{{ pasien.alamat }}</td>
+            </tr>
+
+            <tr>
+                <th>No Telepon</th>
+                <td>{{ pasien.telepon }}</td>
+            </tr>
+
+            <tr>
+                <th>Email</th>
+                <td>{{ pasien.email }}</td>
+            </tr>
+
+        </table>
+
+        <a href="{{ url_for('radmin.data_pasien') }}"
+           class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Kembali
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

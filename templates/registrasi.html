@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block konten %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+
+        <div class="col-md-7">
+
+            <div class="card shadow">
+
+                <div class="card-header text-center">
+                    <h3>Registrasi</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <form action="{{ url_for('rpasien.register') }}" method="POST">
+    {{ form.hidden_tag() }}
+
+
+    <!-- NIK -->
+    <div class="mb-3">
+        {{ form.nik.label(class="form-control-label") }}
+        {% if form.nik.errors %}
+            {{ form.nik(class="form-control is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.nik.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.nik(class="form-control") }}
+        {% endif %}
+    </div>
+
+    <!-- Nama -->
+    <div class="mb-3">
+        {{ form.nama.label(class="form-control-label") }}
+        {{ form.nama(class="form-control") }}
+    </div>
+
+      <!-- Jenis Kelamin -->
+    <div class="mb-3">
+    {{ form.jenis_kelamin.label(class="form-control-label") }}
+    {{ form.jenis_kelamin(class="form-control") }}
+    </div>
+
+    <!-- Alamat -->
+    <div class="mb-3">
+        {{ form.alamat.label(class="form-control-label") }}
+        {{ form.alamat(class="form-control") }}
+    </div>
+
+   <!-- Telepon -->
+    <div class="mb-3">
+        {{ form.telepon.label(class="form-control-label") }}
+        {{ form.telepon(class="form-control") }}
+    </div>
+
+
+
+    <!-- Email -->
+    <div class="mb-3">
+        {{ form.email.label(class="form-control-label") }}
+        {% if form.email.errors %}
+            {{ form.email(class="form-control is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.email(class="form-control") }}
+        {% endif %}
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+        {{ form.password.label(class="form-control-label") }}
+        {% if form.password.errors %}
+            {{ form.password(class="form-control is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.password(class="form-control") }}
+        {% endif %}
+    </div>
+
+    <!-- Konfirmasi Password -->
+    <div class="mb-3">
+        {{ form.konf_pass.label(class="form-control-label") }}
+        {% if form.konf_pass.errors %}
+            {{ form.konf_pass(class="form-control is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.konf_pass.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.konf_pass(class="form-control") }}
+        {% endif %}
+    </div>
+
+    <!-- Tombol Submit -->
+    <div class="mb-3">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</div>
+
+{% endblock %}

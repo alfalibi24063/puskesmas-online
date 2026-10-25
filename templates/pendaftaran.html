@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block konten %}
+
+<h3 class="mb-4">
+    Pendaftaran Konsultasi
+</h3>
+
+<!-- JADWAL DOKTER -->
+<div class="card shadow mb-4">
+
+    <div class="card-header bg-success text-white">
+        <h5>
+            <i class="bi bi-person-vcard"></i>
+            Jadwal Dokter Tersedia
+        </h5>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-success">
+                <tr>
+                    <th>No</th>
+                    <th>Nama Dokter</th>
+                    <th>Spesialis</th>
+                    <th>Jadwal Praktik</th>
+                    <th>No Telepon</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for d in dokter %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ d.nama_dokter }}</td>
+                    <td>{{ d.spesialis }}</td>
+                    <td>{{ d.jadwal }}</td>
+                    <td>{{ d.no_telp }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">
+                        Belum ada dokter tersedia
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- FORM KONSULTASI -->
+<div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+        <h5>
+            <i class="bi bi-calendar-check"></i>
+            Data Pendaftaran Konsultasi
+        </h5>
+    </div>
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            {{ form.hidden_tag() }}
+
+            <table class="table table-bordered">
+
+                <tr>
+                    <td width="200">Keluhan</td>
+                    <td>
+                        {{ form.keluhan(class="form-control", placeholder="Masukkan keluhan") }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Pilih Dokter</td>
+                    <td>
+                        {{ form.dokter(class="form-control") }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Tanggal Konsultasi</td>
+                    <td>
+                        {{ form.tanggal_konsultasi(class="form-control", type="date") }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Jam Konsultasi</td>
+                    <td>
+                        {{ form.jam_konsultasi(class="form-control", type="time") }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="text-center">
+                        {{ form.submit(class="btn btn-success") }}
+                    </td>
+                </tr>
+
+            </table>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- TABEL DATA PENDAFTARAN -->
+<div class="card shadow mt-4">
+
+    <div class="card-header bg-info text-white">
+        <h5>
+            <i class="bi bi-table"></i>
+            Jadwal Konsultasi
+        </h5>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-striped">
+
+            <thead class="table-info">
+                <tr>
+                    <th>No</th>
+                    <th>Keluhan</th>
+                    <th>Dokter</th>
+                    <th>Tanggal Konsultasi</th>
+                    <th>Jam Konsultasi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for k in jadwal %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ k.keluhan }}</td>
+                    <td>{{ k.dokter.nama_dokter }}</td>
+                    <td>{{ k.tanggal_konsultasi }}</td>
+                    <td>{{ k.jam_konsultasi }}</td>
+                </tr>
+
+                {% else %}
+
+                <tr>
+                    <td colspan="5" class="text-center">
+                        Belum ada data konsultasi.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
